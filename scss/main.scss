@@ -1,0 +1,104 @@
+// Vendor Imports
+@import
+'vendor/bourbon/bourbon',
+'vendor/neat/neat';
+
+// Typography
+@import 'partials/typography';
+
+// Colors
+@import 'partials/colors';
+
+// Custom Grid Settings
+@import 'partials/custom-grid';
+
+.content-wrap {
+    @include outer-container;
+    overflow: hidden;
+}
+
+.navbar {
+    @include outer-container;
+    background-color: $secondary-color;
+    height: 50px;
+}
+
+.main-hero {
+    @include outer-container;
+    background-color: $primary-color;
+    height: 300px;
+}
+
+.text-column {
+
+    &-4 {
+        @include span-columns(4);
+
+        @include media($small) {
+            @include span-columns(2);
+        }  
+
+         @include media($medium) {
+            @include span-columns(4);
+            @include shift(1); 
+        }        
+    }
+
+    &-6 {
+        @include span-columns(6);
+        @include shift(3);
+
+        @include media($small) {
+            @include span-columns(2);
+            @include shift(0);
+        }  
+
+         @include media($medium) {
+            @include span-columns(6);
+            @include shift(0); 
+        }   
+    }
+}
+
+.full-width-content {
+    background-color: $secondary-color;
+    height: 100px;
+}
+
+.centered-info {
+    @include outer-container;
+    text-align: center;
+
+    @include media($small) {
+        @include span-columns(2);
+        @include shift(0);
+    }  
+
+     @include media($medium) {
+        @include span-columns(4);
+        @include shift(1); 
+    }
+}
+
+.footer {
+    @include outer-container;
+    background-color: $primary-color;
+    @include media($small) {
+        @include span-columns(2);
+        @include shift(0);
+    }  
+
+     @include media($medium) {
+        @include span-columns(6);
+        @include shift(0); 
+    }
+
+    &-left {
+        @include span-columns(3);
+    }
+
+    &-right {
+        @include span-columns(3);
+        @include shift(6);
+    }
+}

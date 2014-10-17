@@ -1,0 +1,12 @@
+$small: new-breakpoint(max-width 499px 2);
+$medium: new-breakpoint(max-width 900px min-width 500px 6);
+
+.element {
+    @include media($small) {
+      @include span-columns(2);
+    }
+
+    @include media($medium) {
+        @include span-columns(6);
+    }
+}
