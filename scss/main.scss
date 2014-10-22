@@ -15,18 +15,71 @@
 .content-wrap {
     @include outer-container;
     overflow: hidden;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    position: relative;
 }
 
 .navbar {
-    @include outer-container;
     background-color: $secondary-color;
     height: 50px;
 }
 
+.logo {
+    background-color: $primary-color;
+    float: left;
+    height: 50px;
+    margin-top: 0% !important;
+    position: relative;
+    width: 175px;
+    }
+
 .main-hero {
     @include outer-container;
     background-color: $primary-color;
-    height: 300px;
+    height: 450px;
+    position: relative;
+
+    @include media($small) {
+        height: 250px;
+    }
+
+    @include media($medium) {
+        height: 350px;
+    }
+
+    .hero-overlay {
+        width: 300px;
+        left: 50%;
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+
+        h1 {
+            font-family: Arial;
+        }
+    }
+}
+
+.product-row {
+    @include span-columns(10);
+    @include shift(1);
+    
+    .product {
+        @include span-columns(3);
+        
+        p {
+            font-family: 'Arial';
+            font-size: 1em;
+            text-align: center;
+        }
+        img {
+            float: left;
+            width: 100%;
+        }
+    }
 }
 
 .text-column {
