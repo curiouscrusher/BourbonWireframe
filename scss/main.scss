@@ -1,5 +1,6 @@
 // Vendor Imports
 @import
+'vendor/normalize/normalize',
 'vendor/bourbon/bourbon',
 'vendor/neat/neat';
 
@@ -20,19 +21,66 @@
     position: relative;
 }
 
+.container {
+    @include outer-container;
+}
+
+.centered-overlay {
+        width: 300px;
+        left: 50%;
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
 .navbar {
     background-color: $secondary-color;
     height: 50px;
+    position: relative;
+    text-align: center;
+
+    .content-wrap {
+        margin-top: 0 !important;
+    }
 }
 
 .logo {
-    background-color: $primary-color;
-    float: left;
+    @include span-columns(3);
+    background-color: #ddd;
     height: 50px;
     margin-top: 0% !important;
     position: relative;
-    width: 175px;
+
+    @include media($medium) {
+        @include span-columns(3);
     }
+
+    @include media($small) {
+        @include span-columns(2);
+    }
+}
+
+.account {
+    @include span-columns(3);
+    @include shift(6);
+    background-color: #ddd;
+    float: left;
+    height: 50px;
+    overflow: hidden;
+    position: relative;
+
+    @include media($medium) {
+        @include span-columns(3);
+        @include shift(0);
+    }
+
+    @include media($small) {
+        @include span-columns(2);
+        @include shift(0);
+    } 
+}
 
 .main-hero {
     @include outer-container;
@@ -47,38 +95,47 @@
     @include media($medium) {
         height: 350px;
     }
-
-    .hero-overlay {
-        width: 300px;
-        left: 50%;
-        position: absolute;
-        text-align: center;
-        top: 50%;
-        -webkit-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-
-        h1 {
-            font-family: Arial;
-        }
-    }
 }
 
-.product-row {
-    @include span-columns(10);
-    @include shift(1);
-    
-    .product {
+.product {
+    @include span-columns(3);
+    position: relative;
+    text-align: center;
+
+    @include media($medium) {
         @include span-columns(3);
-        
-        p {
-            font-family: 'Arial';
-            font-size: 1em;
-            text-align: center;
+        margin-right: 0;
+    }
+
+    @include media($small) {
+        @include span-columns(2);
+        margin-right: 0;
+    }
+
+    &-row {
+        @include span-columns(12);
+        padding-left: 0;
+
+        @include media($medium) {
+            @include span-columns(6);
         }
-        img {
-            float: left;
-            width: 100%;
+
+        @include media($small) {
+            @include span-columns(2);
         }
+    }
+
+    &-image {
+        display: block;
+        height: auto;
+        position: relative;
+        width: 100%;
+    }
+
+    p {
+        font-family: 'Arial';
+        font-size: 1em;
+        text-align: center;
     }
 }
 
@@ -97,6 +154,21 @@
         }        
     }
 
+    &-5 {
+        @include span-columns(5);
+        @include shift(2);
+
+         @include media($medium) {
+            @include span-columns(4);
+            @include shift(1); 
+        }   
+
+        @include media($small) {
+            @include span-columns(2);
+            @include shift(0);
+        }      
+    }
+
     &-6 {
         @include span-columns(6);
         @include shift(3);
@@ -113,9 +185,47 @@
     }
 }
 
+.first {
+            @include shift(0);
+
+            @include media($medium) {
+                @include span-columns(4);
+                @include shift(1); 
+                }   
+
+            @include media($small) {
+                @include span-columns(2);
+                @include shift(0);
+                } 
+        }
+
 .full-width-content {
     background-color: $secondary-color;
     height: 100px;
+    text-align: center; 
+}
+
+.brand {
+    background-color: $secondary-color;
+    &-title {
+        text-align: center;
+    }
+
+    &-box {
+        @include span-columns(4);
+        background-color: $primary-color;
+        overflow: hidden;
+        text-align: center;
+        margin-bottom: 3%;
+
+        @include media($medium) {
+            @include span-columns(6);
+        }
+
+        @include media($small) {
+            @include span-columns(2);
+        }
+    }
 }
 
 .centered-info {
@@ -136,22 +246,30 @@
 .footer {
     @include outer-container;
     background-color: $primary-color;
+    min-height: 150px;
+    position: relative;
+    height: auto;
+    
+    @include media($medium) {
+        @include span-columns(6);
+        @include shift(0); 
+    }
+
     @include media($small) {
         @include span-columns(2);
         @include shift(0);
     }  
 
-     @include media($medium) {
-        @include span-columns(6);
-        @include shift(0); 
-    }
-
     &-left {
-        @include span-columns(3);
+        @include span-columns(6);
     }
 
     &-right {
-        @include span-columns(3);
-        @include shift(6);
+        @include span-columns(6);
+    }
+
+    ul {
+        float: left;
+        margin-right: 5%;
     }
 }
